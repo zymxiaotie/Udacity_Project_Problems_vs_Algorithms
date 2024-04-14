@@ -39,21 +39,6 @@ class RouteTrieNode:
         self.children[chars] = RouteTrieNode()
 
 
-"""
-Next we need to implement the actual Router. The router will initialize itself with a RouteTrie
- for holding routes and associated handlers. It should also support adding a handler by path 
- and looking up a handler by path. All of these operations will be delegated to the RouteTrie.
-
-Hint: the RouteTrie stores handlers under path parts, so remember to split your path around the '/' character
-
-Bonus Points: Add a not found handler to your Router which is returned whenever a path is not found in the Trie.
-
-More Bonus Points: Handle trailing slashes! A request for '/about' or '/about/' 
-are probably looking for the same page. Requests for '' or '/' are probably looking for the root handler.
- Handle these edge cases in your Router.
-
-"""
-
 ## The Router class will wrap the Trie and handle 
 class Router:
     def __init__(self, root_handler, not_found_handler):
