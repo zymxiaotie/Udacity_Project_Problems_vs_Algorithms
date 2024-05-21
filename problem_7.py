@@ -69,12 +69,13 @@ class Router:
         parts = self.split_path(path)
 
         #a path works with and without a trailing slash
-        if path[-1] == '/':
-            path = path[:-1]
+        if parts[-1] == '/':
+            parts = parts[:-1]
         handler = self.router.find(parts)
         if handler is None:
             return self.not_found_handler
         return handler
+    
     
     def split_path(self, path):
         # you need to split the path into parts for 

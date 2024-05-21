@@ -7,22 +7,23 @@ def sqrt(number):
     Returns:
        int: Floored Square Root
     """
+    # a negative number does not have a square root
     if number<0:
-        return None
-    return sqrt_recursive(number, 0, number)
-
-def sqrt_recursive(number, start, end):
-    # base case
-    if start==end:
-        return start
-    # recursive case
-    mid=(start+end)//2  # floor division    
-    if mid*mid<=number and (mid+1)*(mid+1)>number:
-        return mid
-    elif mid*mid<number:
-        return sqrt_recursive(number, mid+1, end)
-    else:
-        return sqrt_recursive(number, start, mid-1)
+        return None 
+    # 0 is the square root of 0
+    if number==0:
+        return 0
+    # binary search to find the square root
+    start=1
+    end=number
+    while start<=end:
+        mid=(start+end)//2
+        if mid*mid<=number and (mid+1)*(mid+1)>number:
+            return mid
+        elif mid*mid<number:
+            start=mid+1
+        else:
+            end=mid-1
 
 # Test Cases
 print ("Pass" if  (3 == sqrt(9)) else "Fail")
